@@ -1,0 +1,45 @@
+﻿@model HuskyNet.ViewModels.Account.SearchViewModel;
+
+
+<div class="block-reg background-white">
+
+    @if (Model.UserList.Count != 0)
+    {
+
+        @foreach (var user in @Model.UserList)
+        {
+            <div>
+                <div>
+                    <img src="@user.Image" class="ava-search" />
+                </div>
+                <div>
+                    <label>@user.GetFullName()</label>
+                </div>
+                @if (!@user.IsFriendWithCurrent)
+                {         
+                    <form asp-controller="AccountManager" asp-action="AddFriend" asp-route-id="@user.Id" method="post">
+                        <div>
+                            @user.Status
+                        </div>
+                        <div>
+                            @user.About
+                        </div>
+                        <div class="btn-mrg">
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                Добавить в друзья
+                            </button>
+                        </div>
+                    </form>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <div>
+            <label> Поиск не дал результатов.</label>
+        </div>
+    }
+
+
+</div>
