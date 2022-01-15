@@ -11,13 +11,10 @@
 }
 @if (SignInManager.IsSignedIn(User))
 {
-    //редирект
-
+    <div>Привет, @User.Identity.Name!</div>
 }
 else
 {
-
-
     <div class="row">
         <div class="side">
             <div class="center">
@@ -25,13 +22,9 @@ else
             </div>
             <img class="main-img" src="http://pngimg.com/uploads/husky/husky_PNG19.png" />
         </div>
-
-
         <div class="main">
             <partial name="Login" model="@Model.LoginView" />
             <partial name="Register" model="@Model.RegisterView"/>
         </div>
-
     </div>
-
 }

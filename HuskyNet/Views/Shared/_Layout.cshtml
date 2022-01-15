@@ -30,7 +30,10 @@
                     <a asp-area="" asp-controller="AccountManager" asp-action="MyPage"><img class="logo-img" src="HuskyNet.PNG" alt="HuskyNet" align="left"></a>
                 }
                 <partial name="_LoginPartial.cshtml" />
-                <partial name="_SearchLayoutPartial" />
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <partial name="_SearchLayoutPartial" />
+                }
             </div>
         </div>
     </header>
